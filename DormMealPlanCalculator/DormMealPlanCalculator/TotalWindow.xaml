@@ -1,0 +1,45 @@
+﻿<Window x:Class="DormMealPlanCalculator.TotalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DormMealPlanCalculator"
+        mc:Ignorable="d"
+        Title="Dormitory and Meal Plan" Height="450" Width="600" Background="LightCyan">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Image Source="{Binding SelectedDormitory.ImagePath}" Stretch="UniformToFill" Height="140" Width="200" Margin="10" VerticalAlignment="Center"/>
+            <TextBlock VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="20" Margin="10">
+                <Run Text="{Binding SelectedDormitory.Name}"/>
+                <Run Text=":"/>
+            </TextBlock>
+            <TextBlock VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="20" Margin="10">
+                <Run Text="$"/>
+                <Run Text="{Binding SelectedDormitory.PricePerSemester, StringFormat=F2}"/>
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Image Source="{Binding SelectedMeal.ImagePath}" Stretch="UniformToFill" Height="140" Width="200" Margin="10" VerticalAlignment="Center"/>
+            <TextBlock VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="20" Margin="10">
+                <Run Text="{Binding SelectedMeal.Name}"/>
+                <Run Text=":"/>
+            </TextBlock>
+            <TextBlock VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="20" Margin="10">
+                <Run Text="$"/>
+                <Run Text="{Binding SelectedMeal.PricePerSemester, StringFormat=F2}"/>
+            </TextBlock>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" FontFamily="Times New Roman" FontSize="30" FontWeight="Bold" Margin="10" VerticalAlignment="Center">
+            <Run Text="Total price per semester: $"/>
+            <Run Text="{Binding Total, StringFormat=F2}"/>
+        </TextBlock>
+    </Grid>
+</Window>
